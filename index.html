@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>KaDo Clothing 🥑 | Wholesale Fashion Hub</title>
     <!-- Google Fonts for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 (free icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -40,7 +40,7 @@
             height: 200%;
             top: -50%;
             left: -50%;
-            background: repeating-linear-gradient(45deg, rgba(255,215,0,0.035) 0px, rgba(255,215,0,0.035) 2px, transparent 2px, transparent 12px);
+            background: repeating-linear-gradient(45deg, rgba(255,215,0,0.04) 0px, rgba(255,215,0,0.04) 2px, transparent 2px, transparent 12px);
             animation: drift 45s linear infinite;
             pointer-events: none;
         }
@@ -134,88 +134,12 @@
             box-shadow: 0 0 15px rgba(37,211,102,0.4);
         }
 
-        /* stats row */
-        .stats-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 1.5rem;
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(14px);
-            border-radius: 2rem;
-            padding: 1rem 2rem;
-            margin: 2rem 0 2.5rem;
-            border: 1px solid rgba(255,215,0,0.35);
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            flex: 1;
-            text-align: center;
-            padding: 0.8rem;
-            transition: all 0.2s;
-        }
-        .stat-card i {
-            font-size: 2rem;
-            color: #FFD966;
-            margin-bottom: 0.5rem;
-        }
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #FFD966;
-            letter-spacing: 1px;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: #ccc;
-        }
-
-        /* filter bar */
-        .filter-bar {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        .filter-btn {
-            background: rgba(20,20,20,0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid #333;
-            padding: 0.7rem 1.6rem;
-            border-radius: 60px;
-            font-weight: 600;
-            color: #eee;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.9rem;
-        }
-        .filter-btn i {
-            margin-right: 0.5rem;
-            color: #FFD966;
-        }
-        .filter-btn.active {
-            background: #FFD966;
-            color: #000;
-            border-color: #FFD966;
-            box-shadow: 0 0 14px rgba(255,217,102,0.5);
-        }
-        .filter-btn.active i {
-            color: #000;
-        }
-        .filter-btn:hover:not(.active) {
-            background: #2a2a2a;
-            border-color: #FFD966;
-            transform: translateY(-3px);
-        }
-
-        /* product grid */
+        /* product grid - full width without filters */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
+            margin-top: 1rem;
         }
 
         .product-card {
@@ -237,7 +161,7 @@
 
         .img-container {
             width: 100%;
-            height: 260px;
+            height: 270px;
             overflow: hidden;
             background: #1a1a1a;
             position: relative;
@@ -274,29 +198,81 @@
             padding: 1.2rem 1.2rem 1.5rem;
         }
         .product-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.2px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
             color: #fff;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
+        .product-title .emoji {
+            font-size: 1.5rem;
+        }
+        
+        /* Price styling - prominent yellow */
+        .product-price {
+            display: inline-block;
+            background: rgba(255,215,0,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #FFD966;
+            margin: 0.5rem 0 0.6rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-price i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+        
         .product-category {
             display: inline-block;
-            background: rgba(255,215,0,0.15);
+            background: rgba(255,215,0,0.12);
             padding: 0.2rem 0.9rem;
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 600;
             color: #FFD966;
-            margin: 0.6rem 0 0.8rem;
+            margin-right: 0.5rem;
         }
+        
+        /* Product details extra info (fabric, sizes) */
+        .product-details {
+            margin: 0.6rem 0 0.5rem;
+            padding: 0.4rem 0;
+            border-top: 1px dashed rgba(255,215,0,0.2);
+            border-bottom: 1px dashed rgba(255,215,0,0.2);
+            font-size: 0.75rem;
+            color: #ccc;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .product-details span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .product-details i {
+            color: #FFD966;
+            font-size: 0.7rem;
+        }
+        
         .stock-count {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             background: rgba(255,255,255,0.03);
-            padding: 0.6rem 0.8rem;
+            padding: 0.7rem 0.8rem;
             border-radius: 1rem;
             font-weight: 600;
+            margin-top: 0.8rem;
         }
         .stock-value {
             font-size: 1rem;
@@ -316,6 +292,16 @@
             background: linear-gradient(90deg, #FFD966, #f7b42c);
             border-radius: 10px;
             transition: width 0.5s ease-out;
+        }
+        
+        /* Wholesale note */
+        .wholesale-note {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         /* animations */
@@ -365,7 +351,8 @@
             .container { padding: 1rem; }
             .hero h1 { font-size: 2.2rem; }
             .hero h1 i { font-size: 2rem; }
-            .stat-number { font-size: 1.5rem; }
+            .product-price { font-size: 1.1rem; }
+            .product-title { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -377,7 +364,7 @@
             KaDo Clothing 🥑
             <i class="fas fa-leaf"></i>
         </h1>
-        <div class="tagline">Wholesale Fashion — Fresh Stock, Premium Quality</div>
+        <div class="tagline">Wholesale Fashion — Fresh Stock, Best Prices</div>
         <!-- WhatsApp Group Button -->
         <a href="https://chat.whatsapp.com/B7ahsbtptn714SlVZST99c" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
             <div class="whatsapp-cta">
@@ -388,27 +375,11 @@
         </a>
     </div>
 
-    <!-- Stats section -->
-    <div class="stats-row" id="statsPanel">
-        <div class="stat-card"><i class="fas fa-tshirt"></i><div class="stat-number" id="totalProducts">0</div><div class="stat-label">Total SKU</div></div>
-        <div class="stat-card"><i class="fas fa-cubes"></i><div class="stat-number" id="totalUnits">0</div><div class="stat-label">Total Units</div></div>
-        <div class="stat-card"><i class="fas fa-exclamation-triangle"></i><div class="stat-number" id="lowStockCount">0</div><div class="stat-label">Low Stock (<25)</div></div>
-    </div>
-
-    <!-- filter categories matching your dress types -->
-    <div class="filter-bar" id="filterBar">
-        <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> All Collection</button>
-        <button class="filter-btn" data-filter="Frock Top"><i class="fas fa-female"></i> Frock Top</button>
-        <button class="filter-btn" data-filter="Full Kit"><i class="fas fa-people-arrows"></i> Full Kit</button>
-        <button class="filter-btn" data-filter="Long Dress"><i class="fas fa-dress"></i> Long Dress</button>
-        <button class="filter-btn" data-filter="Short Dress"><i class="fas fa-child"></i> Short Dress</button>
-    </div>
-
-    <!-- product grid -->
+    <!-- product grid - displays NAME, PRICE, STOCK with fabric & size info -->
     <div class="products-grid" id="productsGrid"></div>
     
     <footer>
-        <div>© 2025 KaDo Clothing 🥑 — Wholesale Excellence</div>
+        <div>© 2025 KaDo Clothing 🥑 — Premium Wholesale</div>
         <div class="footer-wa">
             <i class="fab fa-whatsapp"></i> 
             <a href="https://chat.whatsapp.com/B7ahsbtptn714SlVZST99c" target="_blank">Join WhatsApp Community →</a>
@@ -417,38 +388,159 @@
 </div>
 
 <script>
-    // ---------- KADO CLOTHING PRODUCTS (FROCK TOP, FULL KIT, LONG DRESS, SHORT DRESS) ----------
+    // ---------- KADO CLOTHING PRODUCTS (with NAME, PRICE, STOCK, FABRIC, SIZES) ----------
+    // Complete collection featuring Frock Tops, Full Kits, Long Dresses, Short Dresses
+    // Special highlight: Crop Top 🤩 with Corduroy fabric, S to XL sizes, wholesale price 1350/=
     const products = [
-        { id: 1, name: "Avocado Embroidery Frock Top", category: "Frock Top", stock: 126, image: "https://picsum.photos/id/20/400/300" },
-        { id: 2, name: "Classic Linen Full Kit", category: "Full Kit", stock: 92, image: "https://picsum.photos/id/26/400/300" },
-        { id: 3, name: "Rustic Floral Long Dress", category: "Long Dress", stock: 58, image: "https://picsum.photos/id/83/400/300" },
-        { id: 4, name: "Chic Pleated Short Dress", category: "Short Dress", stock: 114, image: "https://picsum.photos/id/108/400/300" },
-        { id: 5, name: "Ruffle Sleeve Frock Top", category: "Frock Top", stock: 42, image: "https://picsum.photos/id/36/400/300" },
-        { id: 6, name: "Silk Blend Full Kit", category: "Full Kit", stock: 71, image: "https://picsum.photos/id/42/400/300" },
-        { id: 7, name: "Velvet Maxi Long Dress", category: "Long Dress", stock: 19, image: "https://picsum.photos/id/101/400/300" },
-        { id: 8, name: "Puff Sleeve Short Dress", category: "Short Dress", stock: 98, image: "https://picsum.photos/id/31/400/300" },
-        { id: 9, name: "Off-Shoulder Frock Top", category: "Frock Top", stock: 14, image: "https://picsum.photos/id/82/400/300" },
-        { id: 10, name: "Party Wear Full Kit", category: "Full Kit", stock: 47, image: "https://picsum.photos/id/96/400/300" },
-        { id: 11, name: "Georgette Flowy Long Dress", category: "Long Dress", stock: 12, image: "https://picsum.photos/id/75/400/300" },
-        { id: 12, name: "Denim Style Short Dress", category: "Short Dress", stock: 204, image: "https://picsum.photos/id/59/400/300" },
-        { id: 13, name: "Abstract Print Frock Top", category: "Frock Top", stock: 37, image: "https://picsum.photos/id/24/400/300" },
-        { id: 14, name: "Embroidered Full Kit", category: "Full Kit", stock: 63, image: "https://picsum.photos/id/106/400/300" }
+        { 
+            id: 1, 
+            name: "Crop Top", 
+            emoji: "🤩",
+            category: "Frock Top", 
+            price: "1350/-", 
+            stock: 78, 
+            image: "1.jpeg",
+            fabric: "Corduroy fabric",
+            sizes: "S to XL",
+            special: true
+        },
+        { 
+            id: 2, 
+            name: "Avocado Embroidery Frock Top", 
+            emoji: "🥑",
+            category: "Frock Top", 
+            price: "1899/-", 
+            stock: 126, 
+            image: "https://picsum.photos/id/26/400/300",
+            fabric: "Cotton blend",
+            sizes: "XS to XXL"
+        },
+        { 
+            id: 3, 
+            name: "Classic Linen Full Kit", 
+            emoji: "✨",
+            category: "Full Kit", 
+            price: "3499/-", 
+            stock: 92, 
+            image: "https://picsum.photos/id/83/400/300",
+            fabric: "Premium Linen",
+            sizes: "S to XL"
+        },
+        { 
+            id: 4, 
+            name: "Rustic Floral Long Dress", 
+            emoji: "🌸",
+            category: "Long Dress", 
+            price: "4290/-", 
+            stock: 58, 
+            image: "https://picsum.photos/id/108/400/300",
+            fabric: "Georgette",
+            sizes: "S to XXL"
+        },
+        { 
+            id: 5, 
+            name: "Chic Pleated Short Dress", 
+            emoji: "💃",
+            category: "Short Dress", 
+            price: "2899/-", 
+            stock: 114, 
+            image: "https://picsum.photos/id/36/400/300",
+            fabric: "Polyester blend",
+            sizes: "XS to L"
+        },
+        { 
+            id: 6, 
+            name: "Ruffle Sleeve Frock Top", 
+            emoji: "🎀",
+            category: "Frock Top", 
+            price: "1599/-", 
+            stock: 42, 
+            image: "https://picsum.photos/id/42/400/300",
+            fabric: "Cotton",
+            sizes: "S to XL"
+        },
+        { 
+            id: 7, 
+            name: "Silk Blend Full Kit", 
+            emoji: "👑",
+            category: "Full Kit", 
+            price: "4990/-", 
+            stock: 71, 
+            image: "https://picsum.photos/id/101/400/300",
+            fabric: "Silk blend",
+            sizes: "S to XXL"
+        },
+        { 
+            id: 8, 
+            name: "Velvet Maxi Long Dress", 
+            emoji: "🌙",
+            category: "Long Dress", 
+            price: "5990/-", 
+            stock: 19, 
+            image: "https://picsum.photos/id/31/400/300",
+            fabric: "Velvet",
+            sizes: "M to XL"
+        },
+        { 
+            id: 9, 
+            name: "Puff Sleeve Short Dress", 
+            emoji: "🎈",
+            category: "Short Dress", 
+            price: "2499/-", 
+            stock: 98, 
+            image: "https://picsum.photos/id/82/400/300",
+            fabric: "Cotton rich",
+            sizes: "S to L"
+        },
+        { 
+            id: 10, 
+            name: "Off-Shoulder Frock Top", 
+            emoji: "🌟",
+            category: "Frock Top", 
+            price: "1699/-", 
+            stock: 14, 
+            image: "https://picsum.photos/id/96/400/300",
+            fabric: "Rayon",
+            sizes: "S to XL"
+        },
+        { 
+            id: 11, 
+            name: "Party Wear Full Kit", 
+            emoji: "💎",
+            category: "Full Kit", 
+            price: "6490/-", 
+            stock: 47, 
+            image: "https://picsum.photos/id/75/400/300",
+            fabric: "Chiffon",
+            sizes: "S to XXL"
+        },
+        { 
+            id: 12, 
+            name: "Georgette Flowy Long Dress", 
+            emoji: "🍃",
+            category: "Long Dress", 
+            price: "3890/-", 
+            stock: 12, 
+            image: "https://picsum.photos/id/59/400/300",
+            fabric: "Georgette",
+            sizes: "S to XL"
+        },
+        { 
+            id: 13, 
+            name: "Denim Style Short Dress", 
+            emoji: "👖",
+            category: "Short Dress", 
+            price: "3199/-", 
+            stock: 204, 
+            image: "https://picsum.photos/id/24/400/300",
+            fabric: "Denim",
+            sizes: "XS to XL"
+        }
     ];
 
-    // Helper: update total stats
-    function updateStats() {
-        const totalSKU = products.length;
-        const totalUnitsAll = products.reduce((sum, p) => sum + p.stock, 0);
-        const lowStockAll = products.filter(p => p.stock < 25 && p.stock > 0).length;
-        document.getElementById('totalProducts').innerText = totalSKU;
-        document.getElementById('totalUnits').innerText = totalUnitsAll;
-        document.getElementById('lowStockCount').innerText = lowStockAll;
-    }
-
-    let currentFilter = "all";
     const productsGrid = document.getElementById('productsGrid');
 
-    // stock element with bar and dynamic class
+    // Helper: Generate stock element with bar and dynamic class (shows stock count)
     function getStockElement(stockCount) {
         let barWidth = Math.min(100, (stockCount / 200) * 100);
         if (stockCount > 200) barWidth = 100;
@@ -467,7 +559,7 @@
         return `
             <div class="stock-count">
                 <i class="fas fa-boxes" style="color:#FFD966"></i>
-                <span class="stock-value ${stockClass}">${warningIcon} ${stockCount} pcs</span>
+                <span class="stock-value ${stockClass}">${warningIcon} ${stockCount} pieces</span>
                 <div class="stock-bar-bg">
                     <div class="stock-bar-fill" style="width: ${barWidth}%;"></div>
                 </div>
@@ -476,144 +568,164 @@
     }
 
     function renderProducts() {
-        let filtered = [];
-        if (currentFilter === "all") {
-            filtered = [...products];
-        } else {
-            filtered = products.filter(p => p.category === currentFilter);
-        }
-
-        if (filtered.length === 0) {
+        if (products.length === 0) {
             productsGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; background:rgba(0,0,0,0.6); border-radius:2rem; border:1px solid #FFD96640;">
-                <i class="fas fa-egg" style="font-size:3rem; color:#FFD966"></i><br><br> No items in this category. <br> <span style="color:#FFD966">Explore our fresh collection 🥑</span>
+                <i class="fas fa-egg" style="font-size:3rem; color:#FFD966"></i><br><br> Fresh collection coming soon! 🥑
             </div>`;
-            updateStats();
             return;
         }
 
         let cardsHTML = "";
-        filtered.forEach((product, idx) => {
+        products.forEach((product, idx) => {
             const stockCount = product.stock;
             let badgeExtra = "";
             if (stockCount === 0) badgeExtra = "out-stock";
             else if (stockCount < 25) badgeExtra = "low-stock";
 
             const stockDisplay = getStockElement(stockCount);
+            const emojiDisplay = product.emoji ? `<span class="emoji">${product.emoji}</span>` : '';
+            
+            // Build details section (fabric & sizes)
+            let detailsHTML = '';
+            if (product.fabric || product.sizes) {
+                detailsHTML = `<div class="product-details">`;
+                if (product.fabric) {
+                    detailsHTML += `<span><i class="fas fa-tshirt"></i> ${product.fabric}</span>`;
+                }
+                if (product.sizes) {
+                    detailsHTML += `<span><i class="fas fa-ruler-combined"></i> Sizes: ${product.sizes}</span>`;
+                }
+                detailsHTML += `</div>`;
+            }
+            
             cardsHTML += `
-                <div class="product-card" style="animation-delay: ${idx * 0.03}s;">
+                <div class="product-card" style="animation-delay: ${idx * 0.02}s;">
                     <div class="img-container">
                         <img class="product-img" src="${product.image}" alt="${product.name}" loading="lazy">
                         <div class="stock-badge ${badgeExtra}">
-                            <i class="fas fa-warehouse"></i> LIVE
+                            <i class="fas fa-warehouse"></i> LIVE STOCK
                         </div>
                     </div>
                     <div class="product-info">
-                        <div class="product-title">${product.name}</div>
-                        <div class="product-category"><i class="fas fa-tag"></i> ${product.category}</div>
+                        <div class="product-title">
+                            ${emojiDisplay} ${product.name}
+                        </div>
+                        <div class="product-price">
+                            <i class="fas fa-tag"></i> ${product.price} <span style="font-size:0.7rem;">/ wholesale (per piece)</span>
+                        </div>
+                        <div class="product-category"><i class="fas fa-layer-group"></i> ${product.category}</div>
+                        ${detailsHTML}
                         ${stockDisplay}
+                        <div class="wholesale-note">
+                            <i class="fas fa-truck-fast"></i> Bulk discounts available • Min order 6 pieces
+                        </div>
                     </div>
                 </div>
             `;
         });
         productsGrid.innerHTML = cardsHTML;
-        updateStats();
     }
 
-    function setFilter(category) {
-        currentFilter = category;
-        renderProducts();
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            const btnVal = btn.getAttribute('data-filter');
-            if (btnVal === category) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
-
-    // ---- SIMULATE REAL-TIME STOCK CHANGES (wholesale dynamics) ----
+    // ---- SIMULATE REAL-TIME STOCK CHANGES (wholesale dynamics) to show live inventory updates ----
     function simulateStockUpdates() {
         setInterval(() => {
             const randomIndex = Math.floor(Math.random() * products.length);
             const product = products[randomIndex];
-            // realistic fluctuation: between -8 and +12 units
-            let change = Math.floor(Math.random() * 18) - 7;
+            // realistic fluctuation: between -7 and +11 units to reflect orders & restocks
+            let change = Math.floor(Math.random() * 16) - 6; // -6 to +9
             let newStock = product.stock + change;
             if (newStock < 0) newStock = 0;
             if (newStock > 380) newStock = 380;
             product.stock = newStock;
-
-            const shouldRerender = (currentFilter === "all") || (currentFilter === product.category);
-            if (shouldRerender) {
-                renderProducts();
-            } else {
-                // update stats panel even without re-render if item hidden
-                const totalUnitsAll = products.reduce((sum, p) => sum + p.stock, 0);
-                const lowStockAll = products.filter(p => p.stock < 25 && p.stock > 0).length;
-                document.getElementById('totalUnits').innerText = totalUnitsAll;
-                document.getElementById('lowStockCount').innerText = lowStockAll;
+            
+            // re-render to update stock display and progress bar
+            renderProducts();
+            
+            // Optional: add a small visual notification for stock change (subtle)
+            const cards = document.querySelectorAll('.product-card');
+            if (cards[randomIndex]) {
+                cards[randomIndex].style.transform = 'scale(1.01)';
+                setTimeout(() => {
+                    if (cards[randomIndex]) cards[randomIndex].style.transform = '';
+                }, 200);
             }
-            // flash stats for live feel
-            const totalSpan = document.getElementById('totalUnits');
-            totalSpan.style.transform = 'scale(1.07)';
-            setTimeout(() => { totalSpan.style.transform = ''; }, 200);
-            const lowSpan = document.getElementById('lowStockCount');
-            lowSpan.style.textShadow = '0 0 5px #FFD966';
-            setTimeout(() => { lowSpan.style.textShadow = ''; }, 250);
-        }, 9500);
+        }, 9000);
     }
 
-    // also update stock for low stock visual on demand
+    // Initialize everything when DOM ready
     window.addEventListener('DOMContentLoaded', () => {
         renderProducts();
         simulateStockUpdates();
-
-        // attach filter listeners
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const filterVal = btn.getAttribute('data-filter');
-                setFilter(filterVal);
-                btn.style.transform = 'scale(0.97)';
-                setTimeout(() => { btn.style.transform = ''; }, 150);
-            });
-        });
-
-        // small easter egg: click on logo shows avocado emoji
+        
+        // Small avocado easter egg: click on logo shows fresh message
         const logo = document.querySelector('.hero h1');
         if(logo) {
             logo.addEventListener('click', () => {
                 const avoMsg = document.createElement('div');
-                avoMsg.innerText = '🥑 Fresh Wholesale Deals! 🥑';
+                avoMsg.innerText = '🥑 Fresh Wholesale Stock & Best Prices! 🥑';
                 avoMsg.style.position = 'fixed';
                 avoMsg.style.bottom = '20px';
                 avoMsg.style.left = '50%';
                 avoMsg.style.transform = 'translateX(-50%)';
                 avoMsg.style.backgroundColor = '#FFD966';
                 avoMsg.style.color = '#000';
-                avoMsg.style.padding = '8px 20px';
+                avoMsg.style.padding = '10px 24px';
                 avoMsg.style.borderRadius = '40px';
                 avoMsg.style.fontWeight = 'bold';
                 avoMsg.style.zIndex = '999';
                 avoMsg.style.backdropFilter = 'blur(8px)';
+                avoMsg.style.fontSize = '0.9rem';
+                avoMsg.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
                 document.body.appendChild(avoMsg);
-                setTimeout(() => avoMsg.remove(), 2000);
+                setTimeout(() => avoMsg.remove(), 2200);
             });
         }
+        
+        // Highlight the crop top with a gentle pulse effect on load
+        setTimeout(() => {
+            const cropTopCard = document.querySelector('.product-card');
+            if (cropTopCard) {
+                cropTopCard.style.transition = '0.3s';
+                cropTopCard.style.boxShadow = '0 0 20px rgba(255,215,0,0.5)';
+                setTimeout(() => {
+                    if (cropTopCard) cropTopCard.style.boxShadow = '';
+                }, 1500);
+            }
+        }, 500);
     });
     
-    // Expose quick stock manager for console fun
+    // Expose quick stock manager for business admin (console only)
     window.KaDoStock = {
         restock: (id, newQty) => {
             const prod = products.find(p => p.id === id);
             if(prod) {
                 prod.stock = Math.max(0, newQty);
                 renderProducts();
-                console.log(`✅ ${prod.name} stock updated to ${prod.stock}`);
+                console.log(`✅ ${prod.name} stock updated to ${prod.stock} | Price: ${prod.price}`);
+                return true;
             }
+            console.warn(`Product with id ${id} not found`);
+            return false;
         },
-        viewAll: () => console.table(products)
+        viewInventory: () => console.table(products.map(p => ({ name: p.name, price: p.price, stock: p.stock, fabric: p.fabric, sizes: p.sizes }))),
+        addProduct: (newProduct) => {
+            if(newProduct.name && newProduct.price && newProduct.stock !== undefined) {
+                const newId = products.length + 1;
+                products.push({
+                    id: newId,
+                    name: newProduct.name,
+                    emoji: newProduct.emoji || "👕",
+                    category: newProduct.category || "Frock Top",
+                    price: newProduct.price,
+                    stock: newProduct.stock,
+                    image: newProduct.image || "https://picsum.photos/id/20/400/300",
+                    fabric: newProduct.fabric || "Premium fabric",
+                    sizes: newProduct.sizes || "S to XL"
+                });
+                renderProducts();
+                console.log(`✅ New product added: ${newProduct.name}`);
+            }
+        }
     };
 </script>
 </body>
