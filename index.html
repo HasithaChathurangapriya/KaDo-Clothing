@@ -159,29 +159,47 @@
             box-shadow: 0 28px 35px -12px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,215,0,0.25);
         }
 
+        /* FULL IMAGE DISPLAY - No cropping, shows entire image */
         .img-container {
             width: 100%;
-            height: 270px;
+            height: 320px;
             overflow: hidden;
-            background: #1a1a1a;
+            background: #111;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .product-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            /* object-fit: contain shows the FULL image without any cropping */
+            background: #0a0a0a;
             transition: transform 0.5s ease, filter 0.3s;
         }
         .product-card:hover .product-img {
-            transform: scale(1.08);
-            filter: brightness(1.05);
+            transform: scale(1.03);
+            filter: brightness(1.02);
+        }
+        
+        /* Fallback for images that might have white background */
+        .img-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.2));
+            pointer-events: none;
         }
 
         .stock-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(5px);
             padding: 0.35rem 1rem;
             border-radius: 40px;
@@ -353,6 +371,7 @@
             .hero h1 i { font-size: 2rem; }
             .product-price { font-size: 1.1rem; }
             .product-title { font-size: 1.2rem; }
+            .img-container { height: 280px; }
         }
     </style>
 </head>
@@ -375,7 +394,7 @@
         </a>
     </div>
 
-    <!-- product grid - displays NAME, PRICE, STOCK with fabric & size info -->
+    <!-- product grid - displays FULL images, NAME, PRICE, STOCK with fabric & size info -->
     <div class="products-grid" id="productsGrid"></div>
     
     <footer>
@@ -388,154 +407,177 @@
 </div>
 
 <script>
-    // ---------- KADO CLOTHING PRODUCTS (with NAME, PRICE, STOCK, FABRIC, SIZES) ----------
-    // Complete collection featuring Frock Tops, Full Kits, Long Dresses, Short Dresses
-    // Special highlight: Crop Top 🤩 with Corduroy fabric, S to XL sizes, wholesale price 1350/=
+    // ---------- KADO CLOTHING PRODUCTS - FULL IMAGES (high quality, uncropped) ----------
+    // Using high-resolution images from reliable sources that show full products
+    // Each image is set to display completely without cropping via object-fit: contain
+    
     const products = [
         { 
             id: 1, 
-            name: "Crop Top", 
+            name: "Acid Wash Denim Frock", 
             emoji: "🤩",
-            category: "Frock Top", 
-            price: "1350/-", 
-            stock: 78, 
+            category: "Frock", 
+            price: "2950/-", 
+            stock: "Good", 
             image: "1.jpeg",
-            fabric: "Corduroy fabric",
-            sizes: "S to XL",
+            fabric: "",
+            sizes: "",
             special: true
         },
         { 
             id: 2, 
-            name: "Avocado Embroidery Frock Top", 
+            name: "Frock", 
             emoji: "🥑",
-            category: "Frock Top", 
-            price: "1899/-", 
-            stock: 126, 
-            image: "https://picsum.photos/id/26/400/300",
-            fabric: "Cotton blend",
-            sizes: "XS to XXL"
-        },
-        { 
-            id: 3, 
-            name: "Classic Linen Full Kit", 
-            emoji: "✨",
-            category: "Full Kit", 
-            price: "3499/-", 
-            stock: 92, 
-            image: "https://picsum.photos/id/83/400/300",
-            fabric: "Premium Linen",
+            category: "Frock", 
+            price: "1900/-", 
+            stock: "Good", 
+            image: "2.jpeg",
+            fabric: "Soft Denim",
             sizes: "S to XL"
         },
         { 
+            id: 3, 
+            name: "Frock", 
+            emoji: "✨",
+            category: "Frock", 
+            price: "1900/-", 
+            stock: "Good", 
+            image: "3.jpeg",
+            fabric: "Italian Crush",
+            sizes: "S to 3XL"
+        },
+        { 
             id: 4, 
-            name: "Rustic Floral Long Dress", 
+            name: "Long Dress", 
             emoji: "🌸",
             category: "Long Dress", 
-            price: "4290/-", 
-            stock: 58, 
-            image: "https://picsum.photos/id/108/400/300",
-            fabric: "Georgette",
-            sizes: "S to XXL"
+            price: "2000/-", 
+            stock: "Good", 
+            image: "4.jpeg",
+            fabric: "Italian Crush",
+            sizes: "S to 3XL"
         },
         { 
             id: 5, 
-            name: "Chic Pleated Short Dress", 
+            name: "Frock", 
             emoji: "💃",
-            category: "Short Dress", 
-            price: "2899/-", 
-            stock: 114, 
-            image: "https://picsum.photos/id/36/400/300",
-            fabric: "Polyester blend",
-            sizes: "XS to L"
+            category: "Frock", 
+            price: "1900/-", 
+            stock: "Good", 
+            image: "5.jpeg",
+            fabric: "Check Cotton",
+            sizes: "S to XL"
         },
         { 
             id: 6, 
-            name: "Ruffle Sleeve Frock Top", 
+            name: "Frock", 
             emoji: "🎀",
-            category: "Frock Top", 
-            price: "1599/-", 
-            stock: 42, 
-            image: "https://picsum.photos/id/42/400/300",
-            fabric: "Cotton",
+            category: "Frock", 
+            price: "2100/-", 
+            stock: "Good", 
+            image: "6.jpeg",
+            fabric: "Popcorn",
             sizes: "S to XL"
         },
         { 
             id: 7, 
-            name: "Silk Blend Full Kit", 
+            name: "Top", 
             emoji: "👑",
-            category: "Full Kit", 
-            price: "4990/-", 
-            stock: 71, 
-            image: "https://picsum.photos/id/101/400/300",
-            fabric: "Silk blend",
-            sizes: "S to XXL"
+            category: "", 
+            price: "5 pieces 5000/-", 
+            stock: "Good", 
+            image: "7.1.jpeg",
+            fabric: "Italian Crush",
+            sizes: ""
         },
         { 
             id: 8, 
-            name: "Velvet Maxi Long Dress", 
+            name: "Short Dress", 
             emoji: "🌙",
-            category: "Long Dress", 
-            price: "5990/-", 
-            stock: 19, 
-            image: "https://picsum.photos/id/31/400/300",
-            fabric: "Velvet",
-            sizes: "M to XL"
+            category: "Short Dress", 
+            price: "2250/-", 
+            stock: "Good", 
+            image: "8.jpeg",
+            fabric: "100% Cotton",
+            sizes: ""
         },
         { 
             id: 9, 
-            name: "Puff Sleeve Short Dress", 
+            name: "Crop Top", 
             emoji: "🎈",
-            category: "Short Dress", 
-            price: "2499/-", 
-            stock: 98, 
-            image: "https://picsum.photos/id/82/400/300",
-            fabric: "Cotton rich",
-            sizes: "S to L"
-        },
-        { 
-            id: 10, 
-            name: "Off-Shoulder Frock Top", 
-            emoji: "🌟",
-            category: "Frock Top", 
-            price: "1699/-", 
-            stock: 14, 
-            image: "https://picsum.photos/id/96/400/300",
-            fabric: "Rayon",
+            category: "Crop Top", 
+            price: "1350/-", 
+            stock: "Good", 
+            image: "10.jpeg",
+            fabric: "Corduroy",
             sizes: "S to XL"
         },
-        { 
-            id: 11, 
-            name: "Party Wear Full Kit", 
-            emoji: "💎",
-            category: "Full Kit", 
-            price: "6490/-", 
-            stock: 47, 
-            image: "https://picsum.photos/id/75/400/300",
-            fabric: "Chiffon",
-            sizes: "S to XXL"
-        },
-        { 
-            id: 12, 
-            name: "Georgette Flowy Long Dress", 
-            emoji: "🍃",
-            category: "Long Dress", 
-            price: "3890/-", 
-            stock: 12, 
-            image: "https://picsum.photos/id/59/400/300",
-            fabric: "Georgette",
-            sizes: "S to XL"
-        },
-        { 
-            id: 13, 
-            name: "Denim Style Short Dress", 
-            emoji: "👖",
-            category: "Short Dress", 
-            price: "3199/-", 
-            stock: 204, 
-            image: "https://picsum.photos/id/24/400/300",
-            fabric: "Denim",
-            sizes: "XS to XL"
-        }
+        // { 
+        //     id: 10, 
+        //     name: "Off-Shoulder Frock Top", 
+        //     emoji: "🌟",
+        //     category: "Frock Top", 
+        //     price: "1699/-", 
+        //     stock: 14, 
+        //     image: "https://images.pexels.com/photos/1353701/pexels-photo-1353701.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Rayon",
+        //     sizes: "S to XL"
+        // },
+        // { 
+        //     id: 11, 
+        //     name: "Party Wear Full Kit", 
+        //     emoji: "💎",
+        //     category: "Full Kit", 
+        //     price: "6490/-", 
+        //     stock: 47, 
+        //     image: "https://images.pexels.com/photos/1537647/pexels-photo-1537647.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Chiffon",
+        //     sizes: "S to XXL"
+        // },
+        // { 
+        //     id: 12, 
+        //     name: "Georgette Flowy Long Dress", 
+        //     emoji: "🍃",
+        //     category: "Long Dress", 
+        //     price: "3890/-", 
+        //     stock: 12, 
+        //     image: "https://images.pexels.com/photos/1392679/pexels-photo-1392679.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Georgette",
+        //     sizes: "S to XL"
+        // },
+        // { 
+        //     id: 13, 
+        //     name: "Denim Style Short Dress", 
+        //     emoji: "👖",
+        //     category: "Short Dress", 
+        //     price: "3199/-", 
+        //     stock: 204, 
+        //     image: "https://images.pexels.com/photos/983437/pexels-photo-983437.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Denim",
+        //     sizes: "XS to XL"
+        // },
+        // { 
+        //     id: 14, 
+        //     name: "Summer Floral Frock Top", 
+        //     emoji: "🌺",
+        //     category: "Frock Top", 
+        //     price: "1499/-", 
+        //     stock: 56, 
+        //     image: "https://images.pexels.com/photos/1445202/pexels-photo-1445202.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Rayon",
+        //     sizes: "S to XL"
+        // },
+        // { 
+        //     id: 15, 
+        //     name: "Designer Embroidered Full Kit", 
+        //     emoji: "👘",
+        //     category: "Full Kit", 
+        //     price: "7990/-", 
+        //     stock: 23, 
+        //     image: "https://images.pexels.com/photos/1465317/pexels-photo-1465317.jpeg?auto=compress&cs=tinysrgb&w=800",
+        //     fabric: "Silk",
+        //     sizes: "S to XXL"
+        // }
     ];
 
     const productsGrid = document.getElementById('productsGrid');
@@ -601,7 +643,7 @@
             cardsHTML += `
                 <div class="product-card" style="animation-delay: ${idx * 0.02}s;">
                     <div class="img-container">
-                        <img class="product-img" src="${product.image}" alt="${product.name}" loading="lazy">
+                        <img class="product-img" src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://placehold.co/800x1000/1a1a1a/FFD966?text=KaDo+Clothing'">
                         <div class="stock-badge ${badgeExtra}">
                             <i class="fas fa-warehouse"></i> LIVE STOCK
                         </div>
@@ -683,12 +725,12 @@
         
         // Highlight the crop top with a gentle pulse effect on load
         setTimeout(() => {
-            const cropTopCard = document.querySelector('.product-card');
-            if (cropTopCard) {
-                cropTopCard.style.transition = '0.3s';
-                cropTopCard.style.boxShadow = '0 0 20px rgba(255,215,0,0.5)';
+            const firstCard = document.querySelector('.product-card');
+            if (firstCard) {
+                firstCard.style.transition = '0.3s';
+                firstCard.style.boxShadow = '0 0 20px rgba(255,215,0,0.5)';
                 setTimeout(() => {
-                    if (cropTopCard) cropTopCard.style.boxShadow = '';
+                    if (firstCard) firstCard.style.boxShadow = '';
                 }, 1500);
             }
         }, 500);
@@ -718,7 +760,7 @@
                     category: newProduct.category || "Frock Top",
                     price: newProduct.price,
                     stock: newProduct.stock,
-                    image: newProduct.image || "https://picsum.photos/id/20/400/300",
+                    image: newProduct.image || "https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=800",
                     fabric: newProduct.fabric || "Premium fabric",
                     sizes: newProduct.sizes || "S to XL"
                 });
